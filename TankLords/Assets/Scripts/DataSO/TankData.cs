@@ -12,6 +12,9 @@ namespace DataSO
         public float EngineAudioVolumeDelta = 0.01f;
         public float MaxSpeed = 60f;
         public float RotationSpeed = 100f;
+        public float TrackDistance = 0.2f;
+        public GameObject TracksPrefab;
         public int MaxHealth = 0;
+        public int ObjectPoolSize;
     }
 }

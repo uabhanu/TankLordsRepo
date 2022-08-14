@@ -455,6 +455,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4806963110782137495}
     m_Modifications:
+    - target: {fileID: 625792564597368756, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: tankData
+      value: 
+      objectReference: {fileID: 11400000, guid: 686512ed424584a4e94ec3e63e4d05c3, type: 2}
     - target: {fileID: 814767366792779803, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: TurretData
       value: 

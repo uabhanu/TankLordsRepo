@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Acceleration: 50
   Deacceleration: 90
-  MaxHealth: 20
+  EngineAudioMaxVolume: 1
+  EngineAudioMinVolume: 0.05
+  EngineAudioVolumeDelta: 0.01
   MaxSpeed: 50
   RotationSpeed: 100
+  TrackDistance: 0.2
+  TracksPrefab: {fileID: 1676127972891187836, guid: e7e7897199c0e9d4babda51460726887, type: 3}
+  MaxHealth: 20
+  ObjectPoolSize: 0

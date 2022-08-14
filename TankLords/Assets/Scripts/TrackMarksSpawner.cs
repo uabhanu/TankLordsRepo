@@ -1,3 +1,4 @@
+using DataSO;
 using UnityEngine;
 
 public class TrackMarksSpawner : MonoBehaviour
@@ -7,9 +8,7 @@ public class TrackMarksSpawner : MonoBehaviour
     private ObjectPool _objectPool;
     private Vector2 _lastPosition;
 
-    public float TrackDistance = 0.2f;
-    public GameObject TracksPrefab;
-    public int ObjectPoolSize;
+    [SerializeField] private TankData tankData;
     
     #endregion
 
@@ -23,14 +22,14 @@ public class TrackMarksSpawner : MonoBehaviour
     private void Start()
     {
         _lastPosition = transform.position;
-        _objectPool.Initialize(TracksPrefab , ObjectPoolSize);
+        _objectPool.Initialize(tankData.TracksPrefab , tankData.ObjectPoolSize);
     }
 
     private void Update()
     {
         var distanceDriven = Vector2.Distance(transform.position , _lastPosition);
 
-        if(distanceDriven >= TrackDistance)
+        if(distanceDriven >= tankData.TrackDistance)
         {
             _lastPosition = transform.position;
 

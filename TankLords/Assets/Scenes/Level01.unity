@@ -14226,10 +14226,10 @@ RectTransform:
   m_Father: {fileID: 1783231182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 5, y: -28.906}
-  m_SizeDelta: {x: 0, y: 47.812}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1883782010
 MonoBehaviour:
@@ -23713,6 +23713,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1749502607}
     m_Modifications:
+    - target: {fileID: 625792564597368756, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: tankData
+      value: 
+      objectReference: {fileID: 11400000, guid: 702948d7aa91a8c449b4a5566b6ab6b6, type: 2}
     - target: {fileID: 814767366792779803, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: OnReloading.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
