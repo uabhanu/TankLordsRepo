@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 590ad5ad49b9dab4cae5984d87c69183, type: 3}
-  m_Name: PlayerTankMovementData
+  m_Name: EnemyTankData
   m_EditorClassIdentifier: 
-  Acceleration: 70
-  Deacceleration: 50
-  MaxSpeed: 70
-  RotationSpeed: 200
+  Acceleration: 50
+  Deacceleration: 90
+  MaxHealth: 20
+  MaxSpeed: 50
+  RotationSpeed: 100

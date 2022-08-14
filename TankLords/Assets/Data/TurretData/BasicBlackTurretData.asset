@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletData: {fileID: 11400000, guid: a724c8df4edac8048bdd323019912ce8, type: 2}
   ReloadDelay: 1
+  RotationSpeed: 100
   BulletPrefab: {fileID: 4355591191998084063, guid: bebc980a0585f5045854c5f048cb6700, type: 3}

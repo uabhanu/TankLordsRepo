@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 590ad5ad49b9dab4cae5984d87c69183, type: 3}
-  m_Name: BoostTankMovementData
+  m_Name: BoostTankData
   m_EditorClassIdentifier: 
   Acceleration: 90
   Deacceleration: 80
+  MaxHealth: 150
   MaxSpeed: 120
   RotationSpeed: 200

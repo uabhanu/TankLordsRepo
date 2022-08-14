@@ -7,6 +7,7 @@ namespace DataSO
     {
         public BulletData BulletData;
         public float ReloadDelay;
+        public float RotationSpeed;
         public GameObject BulletPrefab;
     }
 }

@@ -1,3 +1,4 @@
+using DataSO;
 using UnityEngine;
 
 public class EngineAudio : MonoBehaviour
@@ -7,10 +8,7 @@ public class EngineAudio : MonoBehaviour
     private AudioSource _audioSource;
 
     [SerializeField] private float currentVolume;
-
-    public float MaxVolume = 0.10f;
-    public float MinVolume = 0.05f;
-    public float VolumeIncrease = 0.01f;
+    [SerializeField] private TankData tankData;
     
     #endregion
 
@@ -19,7 +17,7 @@ public class EngineAudio : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        currentVolume = MinVolume;
+        currentVolume = tankData.EngineAudioMinVolume;
     }
 
     private void Start()
@@ -31,20 +29,20 @@ public class EngineAudio : MonoBehaviour
     {
         if(speed > 0)
         {
-            if(currentVolume < MaxVolume)
+            if(currentVolume < tankData.EngineAudioMaxVolume)
             {
-                currentVolume += VolumeIncrease * Time.deltaTime;
+                currentVolume += tankData.EngineAudioVolumeDelta * Time.deltaTime;
             }
         }
         else
         {
-            if(currentVolume > MinVolume)
+            if(currentVolume > tankData.EngineAudioMinVolume)
             {
-                currentVolume -= VolumeIncrease * Time.deltaTime;
+                currentVolume -= tankData.EngineAudioVolumeDelta * Time.deltaTime;
             }
         }
 
-        currentVolume = Mathf.Clamp(currentVolume , MinVolume , MaxVolume);
+        currentVolume = Mathf.Clamp(currentVolume , tankData.EngineAudioMinVolume , tankData.EngineAudioMaxVolume);
         _audioSource.volume = currentVolume;
     }
 

@@ -1,3 +1,4 @@
+using DataSO;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,8 +7,8 @@ public class Damageable : MonoBehaviour
     #region Variables
     
     [SerializeField] private int health;
+    [SerializeField] private TankData tankData;
     
-    public int MaxHealth = 0;
     public UnityEvent OnDead;
     public UnityEvent OnHeal;
     public UnityEvent OnHit;
@@ -21,7 +22,7 @@ public class Damageable : MonoBehaviour
     {
         if(Health == 0)
         {
-            Health = MaxHealth;   
+            Health = tankData.MaxHealth;   
         }
     }
 
@@ -35,14 +36,14 @@ public class Damageable : MonoBehaviour
         set
         {
             health = value;
-            OnHealthChange?.Invoke((float)Health / MaxHealth);
+            OnHealthChange?.Invoke((float)Health / tankData.MaxHealth);
         }
     }
 
     public void Heal(int healthBoost)
     {
         Health += healthBoost;
-        Health = Mathf.Clamp(Health , 0 , MaxHealth);
+        Health = Mathf.Clamp(Health , 0 , tankData.MaxHealth);
         OnHeal?.Invoke();
     }
     

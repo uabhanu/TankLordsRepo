@@ -614,6 +614,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3319198042600799704, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: turretData
+      value: 
+      objectReference: {fileID: 11400000, guid: 284f9763018fcff4899e34cda78c6045, type: 2}
     - target: {fileID: 3319198042600799710, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -650,6 +654,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -90479503
       objectReference: {fileID: 0}
+    - target: {fileID: 3319198043001905290, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: tankData
+      value: 
+      objectReference: {fileID: 11400000, guid: 686512ed424584a4e94ec3e63e4d05c3, type: 2}
     - target: {fileID: 3319198043001905290, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: TankMovementData
       value: 
@@ -707,6 +715,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: tankData
+      value: 
+      objectReference: {fileID: 11400000, guid: 686512ed424584a4e94ec3e63e4d05c3, type: 2}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 6
       objectReference: {fileID: 0}
@@ -726,6 +738,10 @@ PrefabInstance:
       propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3980210456931101496, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: tankData
+      value: 
+      objectReference: {fileID: 11400000, guid: 686512ed424584a4e94ec3e63e4d05c3, type: 2}
     - target: {fileID: 6526387911875201257, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: m_RootOrder
       value: 4

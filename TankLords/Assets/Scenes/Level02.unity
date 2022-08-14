@@ -23622,6 +23622,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3319198042600799704, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: turretData
+      value: 
+      objectReference: {fileID: 11400000, guid: 269c0f91a9da634439ea0a7f2b756f6b, type: 2}
     - target: {fileID: 3319198042600799710, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -23634,6 +23638,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3319198043001905290, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: tankData
+      value: 
+      objectReference: {fileID: 11400000, guid: 702948d7aa91a8c449b4a5566b6ab6b6, type: 2}
     - target: {fileID: 3319198043001905290, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: TankMovementData
       value: 
@@ -23695,6 +23703,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: tankData
+      value: 
+      objectReference: {fileID: 11400000, guid: 702948d7aa91a8c449b4a5566b6ab6b6, type: 2}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 474549460}
@@ -23702,6 +23714,10 @@ PrefabInstance:
       propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: set_value
       objectReference: {fileID: 0}
+    - target: {fileID: 3980210456931101496, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: tankData
+      value: 
+      objectReference: {fileID: 11400000, guid: 702948d7aa91a8c449b4a5566b6ab6b6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
 --- !u!1001 &4806963111474747357

@@ -11,7 +11,7 @@ public class TankMover : MonoBehaviour
     private Vector2 _movementVector;
 
     public Rigidbody2D Rb2d;
-    public TankMovementData TankMovementData;
+    public TankData tankData;
     public UnityEvent<float> OnSpeedChange = new UnityEvent<float>();
 
     #endregion
@@ -26,21 +26,21 @@ public class TankMover : MonoBehaviour
     private void FixedUpdate()
     {
         Rb2d.velocity = (Vector2)transform.up * (_currentForwardDirection * _currentSpeed * Time.fixedDeltaTime);
-        Rb2d.MoveRotation(transform.rotation * Quaternion.Euler(0 , 0 , -_movementVector.x * TankMovementData.RotationSpeed * Time.fixedDeltaTime));
+        Rb2d.MoveRotation(transform.rotation * Quaternion.Euler(0 , 0 , -_movementVector.x * tankData.RotationSpeed * Time.fixedDeltaTime));
     }
 
     private void CalculateCurrentSpeed(Vector2 movementVector)
     {
         if(Mathf.Abs(movementVector.y) > 0)
         {
-            _currentSpeed += TankMovementData.Acceleration * Time.deltaTime;
+            _currentSpeed += tankData.Acceleration * Time.deltaTime;
         }
         else
         {
-            _currentSpeed -= TankMovementData.Deacceleration * Time.deltaTime;
+            _currentSpeed -= tankData.Deacceleration * Time.deltaTime;
         }
 
-        _currentSpeed = Mathf.Clamp(_currentSpeed , 0f , TankMovementData.MaxSpeed);
+        _currentSpeed = Mathf.Clamp(_currentSpeed , 0f , tankData.MaxSpeed);
     }
 
     public void Move(Vector2 movementVector)
