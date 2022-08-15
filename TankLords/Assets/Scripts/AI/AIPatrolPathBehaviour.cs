@@ -8,13 +8,13 @@ namespace AI
         #region Variables
         
         private bool _isInitialized = false;
+        [Range(0.1f , 1.0f)] private float _arriveDistance = 1f;
+        private float _waitTime = 0.5f;
         private int _currentIndex = -1;
             
         [SerializeField] private bool isWaiting = false;
         [SerializeField] private Vector2 currentPatrolTarget = Vector2.zero;
         
-        [Range(0.1f , 1.0f)]public float ArriveDistance = 1f;
-        public float WaitTime = 0.5f;
         public PatrolPath PatrolPath;
         
         #endregion
@@ -31,7 +31,7 @@ namespace AI
         
         private IEnumerator WaitCoroutine()
         {
-            yield return new WaitForSeconds(WaitTime);
+            yield return new WaitForSeconds(_waitTime);
             var nextPathPoint = PatrolPath.GetNextPathPoint(_currentIndex);
             currentPatrolTarget = nextPathPoint.Position;
             _currentIndex = nextPathPoint.Index;
@@ -58,7 +58,7 @@ namespace AI
                     }
 
                     //Extract into a method later
-                    if(Vector2.Distance(tankController.transform.position , currentPatrolTarget) < ArriveDistance)
+                    if(Vector2.Distance(tankController.transform.position , currentPatrolTarget) < _arriveDistance)
                     {
                         isWaiting = true;
                         StartCoroutine(WaitCoroutine());

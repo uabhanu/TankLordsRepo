@@ -6,7 +6,7 @@ public class ExitLevel : MonoBehaviour
     
     private GameManager _gameManager;
 
-    public LayerMask PlayerMask;
+    [SerializeField] private LayerMask playerMask;
     
     #endregion
 
@@ -19,7 +19,7 @@ public class ExitLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col2D)
     {
-        if(((1 << col2D.gameObject.layer) & PlayerMask) != 0)
+        if(((1 << col2D.gameObject.layer) & playerMask) != 0)
         {
             _gameManager.SaveData();
             _gameManager.LoadNextLevel();

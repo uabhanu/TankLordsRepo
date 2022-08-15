@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: BulletData
       value: 
       objectReference: {fileID: 11400000, guid: 7455c439c28e6584ab6178cf57c01b69, type: 2}
+    - target: {fileID: 6958753002250220424, guid: bccbfe4e721841247857dbb54f4c3304, type: 3}
+      propertyPath: bulletData
+      value: 
+      objectReference: {fileID: 11400000, guid: a724c8df4edac8048bdd323019912ce8, type: 2}
     - target: {fileID: 6958753002250220428, guid: bccbfe4e721841247857dbb54f4c3304, type: 3}
       propertyPath: m_Color.a
       value: 1

@@ -5,8 +5,8 @@ public class GameManager : MonoBehaviour
 {
     #region Variables
     
-    public GameObject Player;
-    public SaveSystem SaveSystem;
+    private GameObject _player;
+    private SaveSystem _saveSystem;
     
     #endregion
 
@@ -26,23 +26,23 @@ public class GameManager : MonoBehaviour
 
         if(playerInput != null)
         {
-            Player = playerInput.gameObject;
+            _player = playerInput.gameObject;
         }
 
-        SaveSystem = FindObjectOfType<SaveSystem>();
+        _saveSystem = FindObjectOfType<SaveSystem>();
 
-        if(Player != null && SaveSystem.LoadedData != null)
+        if(_player != null && _saveSystem.LoadedData != null)
         {
-            var damageable = Player.GetComponentInChildren<Damageable>();
-            damageable.Health = SaveSystem.LoadedData.PlayerHealth;
+            var damageable = _player.GetComponentInChildren<Damageable>();
+            damageable.Health = _saveSystem.LoadedData.PlayerHealth;
         }
     }
 
     public void LoadLevel()
     {
-        if(SaveSystem.LoadedData != null)
+        if(_saveSystem.LoadedData != null)
         {
-            SceneManager.LoadScene(SaveSystem.LoadedData.SceneIndex);
+            SceneManager.LoadScene(_saveSystem.LoadedData.SceneIndex);
             return;
         }
         
@@ -56,9 +56,9 @@ public class GameManager : MonoBehaviour
 
     public void SaveData()
     {
-        if(Player != null)
+        if(_player != null)
         {
-            SaveSystem.SaveData(SceneManager.GetActiveScene().buildIndex + 1 , Player.GetComponentInChildren<Damageable>().Health);
+            _saveSystem.SaveData(SceneManager.GetActiveScene().buildIndex + 1 , _player.GetComponentInChildren<Damageable>().Health);
         }
     }
 

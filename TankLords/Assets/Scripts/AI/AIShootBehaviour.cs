@@ -6,7 +6,7 @@ namespace AI
     {
         #region Variables
         
-        public float FieldOfVisionForShooting = 60f;
+        private float _fieldOfVisionForShooting = 60f;
         
         #endregion
 
@@ -14,11 +14,12 @@ namespace AI
         
         private bool TargetInFOV(TankController tankController , AIDetector aiDetector)
         {
-            if(tankController != null)
+            if(tankController != null) 
             {
+                //TODO Missing Reference Exception even though null check made above so need to fix it later
                 var direction = aiDetector.Target.position - tankController.AimTurret.transform.position;
 
-                if(Vector2.Angle(tankController.AimTurret.transform.right , direction) < FieldOfVisionForShooting / 2)
+                if(Vector2.Angle(tankController.AimTurret.transform.right , direction) < _fieldOfVisionForShooting / 2)
                 {
                     return true;
                 }   

@@ -6,11 +6,11 @@ namespace AI
     {
         #region Variables
         
+        private float _patrolDelay = 2.5f;
+        
         [SerializeField] private float currentPatrolDelay;
         [SerializeField] private Vector2 randomDirection = Vector2.zero;
-        
-        public float PatrolDelay = 2.5f;
-        
+
         #endregion
 
         #region Functions
@@ -29,7 +29,7 @@ namespace AI
                 if(currentPatrolDelay <= 0 && (angle < 2))
                 {
                     randomDirection = Random.insideUnitCircle;
-                    currentPatrolDelay = PatrolDelay;
+                    currentPatrolDelay = _patrolDelay;
                 }
                 else
                 {

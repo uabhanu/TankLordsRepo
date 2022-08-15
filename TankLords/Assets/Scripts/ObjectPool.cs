@@ -5,33 +5,32 @@ public class ObjectPool : MonoBehaviour
 {
     #region Variables
     
-    protected Queue<GameObject> objectPool; 
+    private Transform _spawnedObjectsParent;
+    protected Queue<GameObject> _objectPool; 
         
+    [SerializeField] private bool alwaysDestroy;
     [SerializeField] protected GameObject objectToPool;
     [SerializeField] protected int poolSize = 10;
 
-    public bool AlwaysDestroy;
-    public Transform SpawnedObjectsParent;
-    
     #endregion
     
     #region Functions
 
     private void Awake()
     {
-        objectPool = new Queue<GameObject>();
+        _objectPool = new Queue<GameObject>();
     }
 
     private void OnDestroy()
     {
-        foreach(var item in objectPool)
+        foreach(var item in _objectPool)
         {
             if(item == null)
             {
                 continue;
             }
             
-            else if(!item.activeSelf || AlwaysDestroy)
+            else if(!item.activeSelf || alwaysDestroy)
             {
                 Destroy(item);
             }
@@ -45,7 +44,7 @@ public class ObjectPool : MonoBehaviour
 
     private void CreateObjectParentIfNeeded()
     {
-        if(SpawnedObjectsParent == null)
+        if(_spawnedObjectsParent == null)
         {
             string name = "ObjectPool_" + objectToPool.name;
 
@@ -53,11 +52,11 @@ public class ObjectPool : MonoBehaviour
 
             if(parentObject != null)
             {
-                SpawnedObjectsParent = parentObject.transform;
+                _spawnedObjectsParent = parentObject.transform;
             }
             else
             {
-                SpawnedObjectsParent = new GameObject(name).transform;
+                _spawnedObjectsParent = new GameObject(name).transform;
             }
         }
     }
@@ -68,22 +67,22 @@ public class ObjectPool : MonoBehaviour
 
         GameObject spawnedObject = null;
 
-        if(objectPool.Count < poolSize)
+        if(_objectPool.Count < poolSize)
         {
             spawnedObject = Instantiate(objectToPool , transform.position , Quaternion.identity);
-            spawnedObject.name = transform.root.name + "_" + objectToPool.name + "_" + objectPool.Count;
-            spawnedObject.transform.SetParent(SpawnedObjectsParent);
+            spawnedObject.name = transform.root.name + "_" + objectToPool.name + "_" + _objectPool.Count;
+            spawnedObject.transform.SetParent(_spawnedObjectsParent);
             spawnedObject.AddComponent<DestroyIfDisabled>();
         }
         else
         {
-            spawnedObject = objectPool.Dequeue();
+            spawnedObject = _objectPool.Dequeue();
             spawnedObject.transform.position = transform.position;
             spawnedObject.transform.rotation = Quaternion.identity;
             spawnedObject.SetActive(true);
         }
         
-        objectPool.Enqueue(spawnedObject);
+        _objectPool.Enqueue(spawnedObject);
         return spawnedObject;
     }
 

@@ -10,16 +10,15 @@ public class Turret : MonoBehaviour
 
     private bool _canShoot = true;
     private Collider2D[] _tankColliders;
-    private ObjectPool bulletPool;
+    private ObjectPool _bulletPool;
 
     [SerializeField] private int bulletPoolCount;
-
-    public float CurrentDelay = 0f;
-    public List<Transform> TurretBarrels;
-    public TurretData TurretData;
-    public UnityEvent OnCanShoot;
-    public UnityEvent OnShoot;
-    public UnityEvent<float> OnReloading;
+    [SerializeField] private float currentDelay = 0f;
+    [SerializeField] private List<Transform> turretBarrels;
+    [SerializeField] private TurretData turretData;
+    [SerializeField] private UnityEvent onCanShoot;
+    [SerializeField] private UnityEvent onShoot;
+    [SerializeField] private UnityEvent<float> onReloading;
     
     #endregion
     
@@ -27,24 +26,24 @@ public class Turret : MonoBehaviour
 
     private void Awake()
     {
-        bulletPool = GetComponent<ObjectPool>();
+        _bulletPool = GetComponent<ObjectPool>();
         _tankColliders = GetComponentsInParent<Collider2D>();
     }
 
     private void Start()
     {
-        bulletPool.Initialize(TurretData.BulletPrefab , bulletPoolCount);
-        OnReloading?.Invoke(CurrentDelay);
+        _bulletPool.Initialize(turretData.BulletPrefab , bulletPoolCount);
+        onReloading?.Invoke(currentDelay);
     }
 
     private void Update()
     {
         if(!_canShoot)
         {
-            CurrentDelay -= Time.deltaTime;
-            OnReloading?.Invoke(CurrentDelay / TurretData.ReloadDelay); // Get the Reload Delay from Turret Data and make sure the value is between 0 & 1
+            currentDelay -= Time.deltaTime;
+            onReloading?.Invoke(currentDelay / turretData.ReloadDelay); // Get the Reload Delay from Turret Data and make sure the value is between 0 & 1
 
-            if(CurrentDelay <= 0)
+            if(currentDelay <= 0)
             {
                 _canShoot = true;
             }
@@ -56,15 +55,15 @@ public class Turret : MonoBehaviour
         if(_canShoot)
         {
             _canShoot = false;
-            CurrentDelay = TurretData.ReloadDelay;
+            currentDelay = turretData.ReloadDelay;
 
-            foreach(var barrel in TurretBarrels)
+            foreach(var barrel in turretBarrels)
             {
                 //GameObject bullet = Instantiate(BulletPrefab);
-                GameObject bullet = bulletPool.CreateObject();
+                GameObject bullet = _bulletPool.CreateObject();
                 bullet.transform.position = barrel.position;
                 bullet.transform.localRotation = barrel.rotation;
-                bullet.GetComponent<Bullet>().Initialize(TurretData.BulletData);
+                bullet.GetComponent<Bullet>().Initialize(turretData.BulletData);
 
                 foreach(var collider in _tankColliders)
                 {
@@ -72,12 +71,12 @@ public class Turret : MonoBehaviour
                 }
             }
             
-            OnShoot?.Invoke();
-            OnReloading?.Invoke(CurrentDelay);
+            onShoot?.Invoke();
+            onReloading?.Invoke(currentDelay);
         }
         else
         {
-            OnCanShoot?.Invoke();
+            onCanShoot?.Invoke();
         }
     }
     

@@ -163,10 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf6bd0e326fcce4497497dd2a49ab51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alwaysDestroy: 1
   objectToPool: {fileID: 0}
   poolSize: 10
-  AlwaysDestroy: 1
-  SpawnedObjectsParent: {fileID: 0}
 --- !u!114 &625792564597368756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,9 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807455b2eb6f60040af4dd7d4179e32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrackDistance: 0.2
-  TracksPrefab: {fileID: 1676127972891187836, guid: e7e7897199c0e9d4babda51460726887, type: 3}
-  ObjectPoolSize: 50
+  tankData: {fileID: 0}
 --- !u!1 &2909489430938724600
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,9 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentVolume: 0
-  MaxVolume: 0.1
-  MinVolume: 0.05
-  VolumeIncrease: 0.01
+  tankData: {fileID: 0}
 --- !u!1 &3319198042600799710
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec23b46fa0c57864cbc40abffdde454a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TurretRotationSpeed: 150
+  turretData: {fileID: 0}
 --- !u!1 &3319198042664601250
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,10 +448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf6bd0e326fcce4497497dd2a49ab51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alwaysDestroy: 0
   objectToPool: {fileID: 0}
   poolSize: 10
-  AlwaysDestroy: 0
-  SpawnedObjectsParent: {fileID: 0}
 --- !u!212 &3319198042998797024
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -522,14 +516,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPoolCount: 2
-  CurrentDelay: 0
-  TurretBarrels:
+  currentDelay: 0
+  turretBarrels:
   - {fileID: 3319198042664601251}
-  TurretData: {fileID: 11400000, guid: 269c0f91a9da634439ea0a7f2b756f6b, type: 2}
-  OnCanShoot:
+  turretData: {fileID: 0}
+  onCanShoot:
     m_PersistentCalls:
       m_Calls: []
-  OnShoot:
+  onShoot:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 94870049185291987}
@@ -556,21 +550,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnReloading:
+  onReloading:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &3319198043001905295
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,9 +652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684b440b879d91b48903e3cea5acf257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rb2d: {fileID: 0}
-  TankMovementData: {fileID: 0}
-  OnSpeedChange:
+  rb2D: {fileID: 3319198043761731167}
+  tankData: {fileID: 0}
+  onSpeedChange:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3980210456931101496}
@@ -765,8 +747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  MaxHealth: 100
-  OnDead:
+  tankData: {fileID: 0}
+  onDead:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 135065824575374519}
@@ -817,22 +799,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnHeal:
+  onHeal:
     m_PersistentCalls:
       m_Calls: []
-  OnHit:
+  onHit:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthChange:
+  onHealthChange:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+        m_TargetAssemblyTypeName: 
         m_MethodName: 
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -987,7 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3016b7f2dbd25cb4ab405b0f37569843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectToInstantiate: {fileID: 3400042822604453134, guid: 5d975657cf418f845a0f948095d8aa0a, type: 3}
+  objectToInstantiate: {fileID: 3400042822604453134, guid: 5d975657cf418f845a0f948095d8aa0a, type: 3}
 --- !u!114 &8140498107949028036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,8 +983,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmosColour: {r: 0, g: 0, b: 0, a: 1}
-  Radius: 0.1
-  ObjPrefab: {fileID: 7475385092848590241, guid: 58f210c5638da9a4cbcce8b512dc63ab, type: 3}
+  radius: 0.2
+  objPrefab: {fileID: 7475385092848590241, guid: 58f210c5638da9a4cbcce8b512dc63ab, type: 3}
 --- !u!1 &6749558801957595301
 GameObject:
   m_ObjectHideFlags: 0

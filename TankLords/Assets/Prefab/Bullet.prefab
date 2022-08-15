@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3016b7f2dbd25cb4ab405b0f37569843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectToInstantiate: {fileID: 2716751525430024913, guid: 59442de0b58cb2945ad2807f9d40421a, type: 3}
+  objectToInstantiate: {fileID: 2716751525430024913, guid: 59442de0b58cb2945ad2807f9d40421a, type: 3}
 --- !u!114 &3639606287729124027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,9 +58,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea97165f02bba5540b2a81dd91a6af47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gizmosColour: {r: 1, g: 1, b: 1, a: 1}
-  Radius: 0.2
-  ObjPrefab: {fileID: 733834024763334036, guid: 486e618f0658e6845a8ac888706302c8, type: 3}
+  gizmosColour: {r: 1, g: 0, b: 0, a: 1}
+  radius: 0.2
+  objPrefab: {fileID: 733834024763334036, guid: 486e618f0658e6845a8ac888706302c8, type: 3}
 --- !u!1 &6958753002250220435
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a929214670baa419824d69b0af65b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletData: {fileID: 0}
-  OnHit:
+  bulletData: {fileID: 0}
+  onHit:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 38642102413785866}

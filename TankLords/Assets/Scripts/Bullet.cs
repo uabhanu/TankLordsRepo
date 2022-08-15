@@ -10,8 +10,8 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D _rb2d;
     private Vector2 _startPosition;
 
-    public BulletData BulletData;
-    public UnityEvent OnHit = new UnityEvent();
+    [SerializeField] private BulletData bulletData;
+    [SerializeField] private UnityEvent onHit = new UnityEvent();
 
     #endregion
 
@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
     {
         _conquaredDistance = Vector2.Distance(transform.position , _startPosition);
 
-        if(_conquaredDistance >= BulletData.MaxDistance)
+        if(_conquaredDistance >= bulletData.MaxDistance)
         {
             DisableObject();
         }
@@ -36,13 +36,13 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log("Collided : " + col2D.name);
         
-        OnHit?.Invoke();
+        onHit?.Invoke();
 
         var damageable = col2D.GetComponent<Damageable>();
 
         if(damageable != null)
         {
-            damageable.Hit(BulletData.Damage);
+            damageable.Hit(bulletData.Damage);
         }
         
         DisableObject();
@@ -56,9 +56,9 @@ public class Bullet : MonoBehaviour
 
     public void Initialize(BulletData bulletData)
     {
-        BulletData = bulletData;
+        this.bulletData = bulletData;
         _startPosition = transform.position;
-        _rb2d.velocity = transform.up * BulletData.Speed;
+        _rb2d.velocity = transform.up * this.bulletData.Speed;
     }
     
     #endregion

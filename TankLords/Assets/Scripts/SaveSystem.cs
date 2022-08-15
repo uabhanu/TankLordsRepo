@@ -7,18 +7,17 @@ public class SaveSystem : MonoBehaviour
     
     private bool _isInitialized;
     
+    [SerializeField] private string playerHealthKey = "PlayerHealth";
+    [SerializeField] private string savePresentKey = "SavePresent";
+    [SerializeField] private string sceneKey = "SceneIndex";
+    [SerializeField] private UnityEvent<bool> onDataLoadedResult;
+    
     public LoadedData LoadedData
     {
         get;
         private set;
     }
 
-    public string PlayerHealthKey = "PlayerHealth";
-    public string SavePresentKey = "SavePresent";
-    public string SceneKey = "SceneIndex";
-
-    public UnityEvent<bool> OnDataLoadedResult;
-    
     #endregion
     
     #region Functions
@@ -31,16 +30,16 @@ public class SaveSystem : MonoBehaviour
     private void Start()
     {
         var result = LoadData();
-        OnDataLoadedResult?.Invoke(result);
+        onDataLoadedResult?.Invoke(result);
     }
 
     public bool LoadData()
     {
-        if(PlayerPrefs.GetInt(SavePresentKey) == 1)
+        if(PlayerPrefs.GetInt(savePresentKey) == 1)
         {
             LoadedData = new LoadedData();
-            LoadedData.PlayerHealth = PlayerPrefs.GetInt(PlayerHealthKey);
-            LoadedData.SceneIndex = PlayerPrefs.GetInt(SceneKey);
+            LoadedData.PlayerHealth = PlayerPrefs.GetInt(playerHealthKey);
+            LoadedData.SceneIndex = PlayerPrefs.GetInt(sceneKey);
             return true;
         }
 
@@ -50,9 +49,9 @@ public class SaveSystem : MonoBehaviour
     public void ResetData()
     {
         //Could use PlayerPrefs.DeleteAll() instead to remove 2 lines of code here. Just a thought
-        PlayerPrefs.DeleteKey(PlayerHealthKey);
-        PlayerPrefs.DeleteKey(SavePresentKey);
-        PlayerPrefs.DeleteKey(SceneKey);
+        PlayerPrefs.DeleteKey(playerHealthKey);
+        PlayerPrefs.DeleteKey(savePresentKey);
+        PlayerPrefs.DeleteKey(sceneKey);
         LoadedData = null;
     }
 
@@ -66,9 +65,9 @@ public class SaveSystem : MonoBehaviour
         LoadedData.PlayerHealth = playerHealth;
         LoadedData.SceneIndex = sceneIndex;
         
-        PlayerPrefs.SetInt(PlayerHealthKey , playerHealth);
-        PlayerPrefs.SetInt(SavePresentKey , 1);
-        PlayerPrefs.SetInt(SceneKey , sceneIndex);
+        PlayerPrefs.SetInt(playerHealthKey , playerHealth);
+        PlayerPrefs.SetInt(savePresentKey , 1);
+        PlayerPrefs.SetInt(sceneKey , sceneIndex);
     }
 
     #endregion

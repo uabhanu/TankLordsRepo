@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class InstantiateUtil : MonoBehaviour
 {
-    public GameObject ObjectToInstantiate;
+    [SerializeField] private GameObject objectToInstantiate;
 
     public void InstantiateObject()
     {
-        Instantiate(ObjectToInstantiate);
+        Instantiate(objectToInstantiate);
     }
 }

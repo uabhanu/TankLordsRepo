@@ -5,9 +5,8 @@ public class ObjectGeneratorRandomPositionUtil : MonoBehaviour
     #region Variables
 
     [SerializeField] private Color gizmosColour;
-    
-    public float Radius;
-    public GameObject ObjPrefab;
+    [SerializeField] private float radius;
+    [SerializeField] private GameObject objPrefab;
     
     #endregion
 
@@ -16,13 +15,13 @@ public class ObjectGeneratorRandomPositionUtil : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = gizmosColour;
-        Gizmos.DrawWireSphere(transform.position , Radius);
+        Gizmos.DrawWireSphere(transform.position , radius);
     }
 
     //This is between private and public as only inherited classes can access unlike private where no class can assess and public where every class can access
     protected virtual GameObject GetObject()
     {
-        return Instantiate(ObjPrefab);
+        return Instantiate(objPrefab);
     }
     
     protected Quaternion Random2DRotation()
@@ -32,7 +31,7 @@ public class ObjectGeneratorRandomPositionUtil : MonoBehaviour
     
     protected Vector2 GetRandomPosition()
     {
-        return Random.insideUnitCircle * Radius + (Vector2)transform.position;
+        return Random.insideUnitCircle * radius + (Vector2)transform.position;
     }
 
     public void CreateObject()

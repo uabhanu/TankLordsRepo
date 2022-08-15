@@ -205,8 +205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWaiting: 0
   currentPatrolTarget: {x: 0, y: 0}
-  ArriveDistance: 1
-  WaitTime: 0.5
   PatrolPath: {fileID: 0}
 --- !u!114 &3011334368000550432
 MonoBehaviour:
@@ -220,7 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ac81c569c9d6d4c8e681400e46eee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FieldOfVisionForShooting: 60
 --- !u!114 &3011334368000550435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,10 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb505af04b9f3a1449e380e09024eaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointsColor: {r: 0, g: 0, b: 1, a: 1}
-  LineColor: {r: 1, g: 0, b: 1, a: 1}
-  PointSize: 0.3
-  PatrolPoints:
+  patrolPoints:
   - {fileID: 3011334368970169835}
   - {fileID: 3011334368503008995}
   - {fileID: 3011334369343844611}
@@ -469,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b57931c55333964685a27aa1fb2d5bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectToFollow: {fileID: 565836926598980034}
+  objectToFollow: {fileID: 565836926598980034}
 --- !u!1 &5857626942745937861
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +608,10 @@ PrefabInstance:
       propertyPath: TurretData
       value: 
       objectReference: {fileID: 11400000, guid: 284f9763018fcff4899e34cda78c6045, type: 2}
+    - target: {fileID: 814767366792779803, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: turretData
+      value: 
+      objectReference: {fileID: 11400000, guid: 284f9763018fcff4899e34cda78c6045, type: 2}
     - target: {fileID: 1904086987338075773, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -727,7 +725,15 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 4068750830640150855}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 4068750830640150855}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
@@ -735,11 +741,51 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3962899659604246799}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3962899659604246799}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_value
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_value
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.UI.Slider, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: OnDead.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3980210456931101496, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
@@ -769,6 +815,18 @@ PrefabInstance:
     - target: {fileID: 7005186762103680587, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: gizmosColour.r
       value: 0.34509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140498107949028036, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: gizmosColour.b
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140498107949028036, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: gizmosColour.g
+      value: 0.3647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140498107949028036, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: gizmosColour.r
+      value: 0.37647063
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3186306885174065482, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}

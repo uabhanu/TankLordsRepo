@@ -4,7 +4,7 @@ public class UIFollowTank : MonoBehaviour
 {
     private RectTransform _rectTransform;
     
-    public Transform ObjectToFollow;
+    [SerializeField] private Transform objectToFollow;
 
     private void Awake()
     {
@@ -13,9 +13,9 @@ public class UIFollowTank : MonoBehaviour
 
     private void Update()
     {
-        if(ObjectToFollow != null)
+        if(objectToFollow != null)
         {
-            _rectTransform.anchoredPosition = ObjectToFollow.localPosition;
+            _rectTransform.anchoredPosition = objectToFollow.localPosition;
         }
     }
 }

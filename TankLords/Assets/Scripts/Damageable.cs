@@ -8,11 +8,10 @@ public class Damageable : MonoBehaviour
     
     [SerializeField] private int health;
     [SerializeField] private TankData tankData;
-    
-    public UnityEvent OnDead;
-    public UnityEvent OnHeal;
-    public UnityEvent OnHit;
-    public UnityEvent<float> OnHealthChange;
+    [SerializeField] private UnityEvent onDead;
+    [SerializeField] private UnityEvent onHeal;
+    [SerializeField] private UnityEvent onHit;
+    [SerializeField] private UnityEvent<float> onHealthChange;
     
     #endregion
 
@@ -36,7 +35,7 @@ public class Damageable : MonoBehaviour
         set
         {
             health = value;
-            OnHealthChange?.Invoke((float)Health / tankData.MaxHealth);
+            onHealthChange?.Invoke((float)Health / tankData.MaxHealth);
         }
     }
 
@@ -44,7 +43,7 @@ public class Damageable : MonoBehaviour
     {
         Health += healthBoost;
         Health = Mathf.Clamp(Health , 0 , tankData.MaxHealth);
-        OnHeal?.Invoke();
+        onHeal?.Invoke();
     }
     
     public void Hit(int damagePoints)
@@ -53,11 +52,11 @@ public class Damageable : MonoBehaviour
 
         if(Health <= 0)
         {
-            OnDead?.Invoke();
+            onDead?.Invoke();
         }
         else
         {
-            OnHit?.Invoke();
+            onHit?.Invoke();
         }
     }
     

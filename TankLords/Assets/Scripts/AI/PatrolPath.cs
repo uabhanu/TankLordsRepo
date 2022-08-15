@@ -8,11 +8,11 @@ namespace AI
         #region Variables
 
         [Header("Gizmos Parameters")]
-        public Color PointsColor = Color.blue;
-        public Color LineColor = Color.magenta;
-        public float PointSize = 0.3f;
+        private Color _lineColor = Color.magenta;
+        private Color _pointsColor = Color.blue;
+        private float _pointSize = 0.3f;
         
-        public List<Transform> PatrolPoints = new List<Transform>();
+        [SerializeField] private List<Transform> patrolPoints = new List<Transform>();
         
         public struct PathPoint
         {
@@ -26,32 +26,32 @@ namespace AI
 
         private void OnDrawGizmos()
         {
-            if(PatrolPoints.Count == 0)
+            if(patrolPoints.Count == 0)
             {
                 return;
             }
 
-            for(int i = PatrolPoints.Count - 1; i >= 0; i--)
+            for(int i = patrolPoints.Count - 1; i >= 0; i--)
             {
-                if(i == -1 || PatrolPoints[i] == null)
+                if(i == -1 || patrolPoints[i] == null)
                 {
                     return;
                 }
 
-                Gizmos.color = PointsColor;
-                Gizmos.DrawSphere(PatrolPoints[i].position , PointSize);
+                Gizmos.color = _pointsColor;
+                Gizmos.DrawSphere(patrolPoints[i].position , _pointSize);
 
-                if(PatrolPoints.Count == 1 || i == 0)
+                if(patrolPoints.Count == 1 || i == 0)
                 {
                     return;
                 }
 
-                Gizmos.color = LineColor;
-                Gizmos.DrawLine(PatrolPoints[i].position , PatrolPoints[i - 1].position);
+                Gizmos.color = _lineColor;
+                Gizmos.DrawLine(patrolPoints[i].position , patrolPoints[i - 1].position);
 
-                if(PatrolPoints.Count >= 2 && i == PatrolPoints.Count - 1)
+                if(patrolPoints.Count >= 2 && i == patrolPoints.Count - 1)
                 {
-                    Gizmos.DrawLine(PatrolPoints[i].position , PatrolPoints[0].position);
+                    Gizmos.DrawLine(patrolPoints[i].position , patrolPoints[0].position);
                 }
             }
         }
@@ -61,9 +61,9 @@ namespace AI
             var index = -1;
             var minDistance = float.MaxValue;
 
-            for(int i = 0; i < PatrolPoints.Count; i++)
+            for(int i = 0; i < patrolPoints.Count; i++)
             {
-                var tempDistance = Vector2.Distance(tankPosition , PatrolPoints[i].position);
+                var tempDistance = Vector2.Distance(tankPosition , patrolPoints[i].position);
 
                 if(tempDistance < minDistance)
                 {
@@ -72,18 +72,18 @@ namespace AI
                 }
             }
 
-            return new PathPoint { Index = index , Position = PatrolPoints[index].position };
+            return new PathPoint { Index = index , Position = patrolPoints[index].position };
         }
 
         public PathPoint GetNextPathPoint(int index)
         {
-            var newIndex = index + 1 >= PatrolPoints.Count ? 0 : index + 1;
-            return  new PathPoint { Index = newIndex , Position = PatrolPoints[newIndex].position };
+            var newIndex = index + 1 >= patrolPoints.Count ? 0 : index + 1;
+            return  new PathPoint { Index = newIndex , Position = patrolPoints[newIndex].position };
         }
 
         public int Length
         {
-            get => PatrolPoints.Count;
+            get => patrolPoints.Count;
         }
         
         #endregion
