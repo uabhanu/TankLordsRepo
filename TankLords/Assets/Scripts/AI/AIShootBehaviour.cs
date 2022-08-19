@@ -14,7 +14,7 @@ namespace AI
         
         private bool TargetInFOV(TankController tankController , AIDetector aiDetector)
         {
-            if(tankController != null) 
+            if(aiDetector.Target != null) 
             {
                 //TODO Missing Reference Exception even though null check made above so need to fix it later
                 var direction = aiDetector.Target.position - tankController.AimTurret.transform.position;
@@ -37,8 +37,11 @@ namespace AI
                     tankController.HandleMoveBody(Vector2.zero);
                     tankController.HandleShoot();
                 }
-            
-                tankController.HandleMoveTurret(aiDetector.Target.position);   
+
+                if(aiDetector.Target != null)
+                {
+                    tankController.HandleMoveTurret(aiDetector.Target.position);   
+                }
             }
         }
         
