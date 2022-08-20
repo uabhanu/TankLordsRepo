@@ -707,6 +707,7 @@ Transform:
   - {fileID: 3319198042600799711}
   - {fileID: 6713313050523758391}
   - {fileID: 3346217944892260059}
+  - {fileID: 4756473569147690102}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -778,6 +779,18 @@ MonoBehaviour:
       - m_Target: {fileID: -3963502256043606398}
         m_TargetAssemblyTypeName: DestroyUtil, Assembly-CSharp
         m_MethodName: DestroyHelper
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5099798685776176776}
+        m_TargetAssemblyTypeName: ObjectGeneratorRandomPositionUtil, Assembly-CSharp
+        m_MethodName: CreateObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -985,6 +998,53 @@ MonoBehaviour:
   gizmosColour: {r: 0, g: 0, b: 0, a: 1}
   radius: 0.2
   objPrefab: {fileID: 7475385092848590241, guid: 58f210c5638da9a4cbcce8b512dc63ab, type: 3}
+--- !u!1 &4802106196228655985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4756473569147690102}
+  - component: {fileID: 5099798685776176776}
+  m_Layer: 0
+  m_Name: SpawnCoins
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4756473569147690102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802106196228655985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3319198043761731166}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5099798685776176776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802106196228655985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea97165f02bba5540b2a81dd91a6af47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gizmosColour: {r: 0, g: 0, b: 0, a: 0}
+  radius: 0.2
+  objPrefab: {fileID: 6273814206158829136, guid: d9a116bf4827a2745a8564bd73c1bb58, type: 3}
 --- !u!1 &6749558801957595301
 GameObject:
   m_ObjectHideFlags: 0

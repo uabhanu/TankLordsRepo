@@ -583,6 +583,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
@@ -590,7 +594,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8804548244386546868}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
-      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 8804548244386546868}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
@@ -598,7 +602,7 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
-      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
@@ -627,6 +631,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: ObjectGeneratorRandomPositionUtil, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
@@ -642,6 +650,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760019551403206827, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -649,6 +661,26 @@ PrefabInstance:
       propertyPath: tankData
       value: 
       objectReference: {fileID: 11400000, guid: 686512ed424584a4e94ec3e63e4d05c3, type: 2}
+    - target: {fileID: 5099798685776176776, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: objPrefab
+      value: 
+      objectReference: {fileID: 2896006505907891843, guid: cb1ea76ee265d85488910837e8c427d0, type: 3}
+    - target: {fileID: 5099798685776176776, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: gizmosColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099798685776176776, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: gizmosColour.b
+      value: 0.23529413
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099798685776176776, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: gizmosColour.g
+      value: 0.3019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099798685776176776, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: gizmosColour.r
+      value: 0.9058824
+      objectReference: {fileID: 0}
     - target: {fileID: 5753251336452177873, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: ObjectToFollow
       value: 

@@ -38,6 +38,43 @@ namespace AI
             isWaiting = false;
         }
 
+        private void CalculateDirection(TankController tankController)
+        {
+            Vector2 directionToGo = currentPatrolTarget - (Vector2)tankController.TankMover.transform.position;
+            var dotProduct = Vector2.Dot(tankController.TankMover.transform.up , directionToGo.normalized);
+
+            if(dotProduct < 0.98f)
+            {
+                var crossProduct = Vector3.Cross(tankController.TankMover.transform.up , directionToGo.normalized);
+                int rotationResult = crossProduct.z >= 0 ? -1 : 1;
+                tankController.HandleMoveBody(new Vector2(rotationResult , 1));
+            }
+            else
+            {
+                tankController.HandleMoveBody(Vector2.up);
+            }    
+        }
+        
+        private void CalculateDistance(TankController tankController)
+        {
+            if(Vector2.Distance(tankController.transform.position , currentPatrolTarget) < _arriveDistance)
+            {
+                isWaiting = true;
+                StartCoroutine(WaitCoroutine());
+            }
+        }
+
+        private void Initialize(TankController tankController , AIDetector aiDetector)
+        {
+            if(!_isInitialized) //Extract into a method later
+            {
+                var currentPathPoint = PatrolPath.GetClosestPathPoint(tankController.transform.position);
+                _currentIndex = currentPathPoint.Index;
+                currentPatrolTarget = currentPathPoint.Position;
+                _isInitialized = true;
+            }
+        }
+
         public override void PerformAction(TankController tankController , AIDetector aiDetector)
         {
             if(tankController != null)
@@ -49,35 +86,9 @@ namespace AI
                         return;
                     }
 
-                    if(!_isInitialized) //Extract into a method later
-                    {
-                        var currentPathPoint = PatrolPath.GetClosestPathPoint(tankController.transform.position);
-                        _currentIndex = currentPathPoint.Index;
-                        currentPatrolTarget = currentPathPoint.Position;
-                        _isInitialized = true;
-                    }
-
-                    //Extract into a method later
-                    if(Vector2.Distance(tankController.transform.position , currentPatrolTarget) < _arriveDistance)
-                    {
-                        isWaiting = true;
-                        StartCoroutine(WaitCoroutine());
-                    }
-
-                    //Extract into a method later
-                    Vector2 directionToGo = currentPatrolTarget - (Vector2)tankController.TankMover.transform.position;
-                    var dotProduct = Vector2.Dot(tankController.TankMover.transform.up , directionToGo.normalized);
-
-                    if(dotProduct < 0.98f)
-                    {
-                        var crossProduct = Vector3.Cross(tankController.TankMover.transform.up , directionToGo.normalized);
-                        int rotationResult = crossProduct.z >= 0 ? -1 : 1;
-                        tankController.HandleMoveBody(new Vector2(rotationResult , 1));
-                    }
-                    else
-                    {
-                        tankController.HandleMoveBody(Vector2.up);
-                    }
+                    Initialize(tankController , aiDetector);
+                    CalculateDistance(tankController);
+                    CalculateDirection(tankController);
                 }   
             }
         }

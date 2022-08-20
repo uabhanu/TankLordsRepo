@@ -17,7 +17,7 @@ TagManager:
   - ObstaclesMovement
   - Enemy
   - LevelTransition
-  - 
+  - Collectibles
   - 
   - 
   - 
@@ -56,7 +56,7 @@ TagManager:
   - name: Player
     uniqueID: 1829338787
     locked: 0
-  - name: Items
+  - name: Collectibles
     uniqueID: 1329044747
     locked: 0
   - name: Bullets
