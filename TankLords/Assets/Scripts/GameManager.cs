@@ -1,11 +1,16 @@
+using AI;
+using Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utils;
 
 public class GameManager : MonoBehaviour
 {
     #region Variables
     
     private GameObject _player;
+    private int _minimumNumberOfEnemies = 0;
+    private int _numberOfEnemyTanksAlive;
     private SaveSystem _saveSystem;
     
     #endregion
@@ -16,6 +21,12 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += Initialize;
+        SubscribeToEvents();
+    }
+
+    private void OnDestroy()
+    {
+        UnsubscribeToEvents();
     }
 
     private void Initialize(Scene scene , LoadSceneMode sceneMode)
@@ -26,6 +37,7 @@ public class GameManager : MonoBehaviour
 
         if(playerInput != null)
         {
+            _numberOfEnemyTanksAlive = FindObjectsOfType<DefaultEnemyAI>().Length;
             _player = playerInput.gameObject;
         }
 
@@ -62,5 +74,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #endregion
+    
+    #region Event Functions
+
+    private void OnEnemyDied()
+    {
+        _numberOfEnemyTanksAlive--;
+        Mathf.Clamp(_numberOfEnemyTanksAlive , _minimumNumberOfEnemies , _numberOfEnemyTanksAlive);
+
+        if(_numberOfEnemyTanksAlive == _minimumNumberOfEnemies)
+        {
+            GetComponent<ObjectGeneratorUtil>().CreateObject();
+        }
+    }
+    
+    private void SubscribeToEvents()
+    {
+        EventsManager.SubscribeToEvent(TanksEvent.EnemyDied , OnEnemyDied);
+    }
+    
+    private void UnsubscribeToEvents()
+    {
+        EventsManager.UnsubscribeFromEvent(TanksEvent.EnemyDied , OnEnemyDied);
+    }
+    
     #endregion
 }

@@ -2,6 +2,7 @@
 {
     public enum TanksEvent
 	{
-		CollectibleCollected
+		CollectibleCollected,
+		EnemyDied
 	}
 }

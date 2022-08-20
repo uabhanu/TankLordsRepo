@@ -64,9 +64,9 @@ namespace AI
             }
         }
 
-        private void Initialize(TankController tankController , AIDetector aiDetector)
+        private void Initialize(TankController tankController)
         {
-            if(!_isInitialized) //Extract into a method later
+            if(!_isInitialized)
             {
                 var currentPathPoint = PatrolPath.GetClosestPathPoint(tankController.transform.position);
                 _currentIndex = currentPathPoint.Index;
@@ -86,7 +86,7 @@ namespace AI
                         return;
                     }
 
-                    Initialize(tankController , aiDetector);
+                    Initialize(tankController);
                     CalculateDistance(tankController);
                     CalculateDirection(tankController);
                 }   

@@ -7,6 +7,7 @@ namespace Events
 		#region Actions
 		
 		protected static event Action CollectibleCollectedAction;
+		protected static event Action EnemyDiedAction;
 		
 		#endregion
 
@@ -19,6 +20,10 @@ namespace Events
 				case TanksEvent.CollectibleCollected:
 					CollectibleCollectedAction += actionFunction;
 				break;
+				
+				case TanksEvent.EnemyDied:
+					EnemyDiedAction += actionFunction;
+				break;
 			}
 		}
 
@@ -29,6 +34,10 @@ namespace Events
 				case TanksEvent.CollectibleCollected:
 					CollectibleCollectedAction -= actionFunction;
 				break;
+				
+				case TanksEvent.EnemyDied:
+					EnemyDiedAction -= actionFunction;
+				break;
 			}
 		}
 		
@@ -38,6 +47,10 @@ namespace Events
 			{
 				case TanksEvent.CollectibleCollected:
 					CollectibleCollectedAction?.Invoke();
+				break;
+				
+				case TanksEvent.EnemyDied:
+					EnemyDiedAction?.Invoke();
 				break;
 			}
 		}

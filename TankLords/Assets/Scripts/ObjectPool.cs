@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class ObjectPool : MonoBehaviour
 
             else
             {
-                item.GetComponent<DestroyIfDisabled>().SelfDestructionEnabled = true;
+                item.GetComponent<DestroyIfDisabledUtil>().SelfDestructionEnabled = true;
             }
         }
     }
@@ -72,7 +73,7 @@ public class ObjectPool : MonoBehaviour
             spawnedObject = Instantiate(objectToPool , transform.position , Quaternion.identity);
             spawnedObject.name = transform.root.name + "_" + objectToPool.name + "_" + _objectPool.Count;
             spawnedObject.transform.SetParent(_spawnedObjectsParent);
-            spawnedObject.AddComponent<DestroyIfDisabled>();
+            spawnedObject.AddComponent<DestroyIfDisabledUtil>();
         }
         else
         {
