@@ -1,4 +1,3 @@
-using DataSO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +7,7 @@ public class Turret : MonoBehaviour
 {
     #region Variables
 
+    private AimTurret _aimTurret;
     private bool _canShoot = true;
     private Collider2D[] _tankColliders;
     private ObjectPool _bulletPool;
@@ -15,7 +15,6 @@ public class Turret : MonoBehaviour
     [SerializeField] private int bulletPoolCount;
     [SerializeField] private float currentDelay = 0f;
     [SerializeField] private List<Transform> turretBarrels;
-    [SerializeField] private TurretData turretData;
     [SerializeField] private UnityEvent onCanShoot;
     [SerializeField] private UnityEvent onShoot;
     [SerializeField] private UnityEvent<float> onReloading;
@@ -26,13 +25,14 @@ public class Turret : MonoBehaviour
 
     private void Awake()
     {
+        _aimTurret = GetComponentInParent<AimTurret>();
         _bulletPool = GetComponent<ObjectPool>();
         _tankColliders = GetComponentsInParent<Collider2D>();
     }
 
     private void Start()
     {
-        _bulletPool.Initialize(turretData.BulletPrefab , bulletPoolCount);
+        _bulletPool.Initialize(_aimTurret.TurretData.BulletPrefab , bulletPoolCount);
         onReloading?.Invoke(currentDelay);
     }
 
@@ -41,7 +41,7 @@ public class Turret : MonoBehaviour
         if(!_canShoot)
         {
             currentDelay -= Time.deltaTime;
-            onReloading?.Invoke(currentDelay / turretData.ReloadDelay); // Get the Reload Delay from Turret Data and make sure the value is between 0 & 1
+            onReloading?.Invoke(currentDelay / _aimTurret.TurretData.ReloadDelay); // Get the Reload Delay from Turret Data and make sure the value is between 0 & 1
 
             if(currentDelay <= 0)
             {
@@ -55,7 +55,7 @@ public class Turret : MonoBehaviour
         if(_canShoot)
         {
             _canShoot = false;
-            currentDelay = turretData.ReloadDelay;
+            currentDelay = _aimTurret.TurretData.ReloadDelay;
 
             foreach(var barrel in turretBarrels)
             {
@@ -63,7 +63,7 @@ public class Turret : MonoBehaviour
                 GameObject bullet = _bulletPool.CreateObject();
                 bullet.transform.position = barrel.position;
                 bullet.transform.localRotation = barrel.rotation;
-                bullet.GetComponent<Bullet>().Initialize(turretData.BulletData);
+                bullet.GetComponent<Bullet>().Initialize(_aimTurret.TurretData.BulletData);
 
                 foreach(var collider in _tankColliders)
                 {

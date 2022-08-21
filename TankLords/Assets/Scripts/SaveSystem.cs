@@ -7,6 +7,7 @@ public class SaveSystem : MonoBehaviour
     
     private bool _isInitialized;
     
+    [SerializeField] private string moneyEarnedKey = "MoneyEarned";
     [SerializeField] private string playerHealthKey = "PlayerHealth";
     [SerializeField] private string savePresentKey = "SavePresent";
     [SerializeField] private string sceneKey = "SceneIndex";
@@ -38,6 +39,7 @@ public class SaveSystem : MonoBehaviour
         if(PlayerPrefs.GetInt(savePresentKey) == 1)
         {
             LoadedData = new LoadedData();
+            LoadedData.MoneyEarned = PlayerPrefs.GetInt(moneyEarnedKey);
             LoadedData.PlayerHealth = PlayerPrefs.GetInt(playerHealthKey);
             LoadedData.SceneIndex = PlayerPrefs.GetInt(sceneKey);
             return true;
@@ -48,23 +50,22 @@ public class SaveSystem : MonoBehaviour
 
     public void ResetData()
     {
-        //Could use PlayerPrefs.DeleteAll() instead to remove 2 lines of code here. Just a thought
-        PlayerPrefs.DeleteKey(playerHealthKey);
-        PlayerPrefs.DeleteKey(savePresentKey);
-        PlayerPrefs.DeleteKey(sceneKey);
+        PlayerPrefs.DeleteAll();
         LoadedData = null;
     }
 
-    public void SaveData(int sceneIndex , int playerHealth)
+    public void SaveData(int moneyEarned , int sceneIndex , int playerHealth)
     {
         if(LoadedData == null)
         {
             LoadedData = new LoadedData();
         }
 
+        LoadedData.MoneyEarned = moneyEarned;
         LoadedData.PlayerHealth = playerHealth;
         LoadedData.SceneIndex = sceneIndex;
         
+        PlayerPrefs.SetInt(moneyEarnedKey , moneyEarned);
         PlayerPrefs.SetInt(playerHealthKey , playerHealth);
         PlayerPrefs.SetInt(savePresentKey , 1);
         PlayerPrefs.SetInt(sceneKey , sceneIndex);
@@ -75,6 +76,7 @@ public class SaveSystem : MonoBehaviour
 
 public class LoadedData
 {
+    public int MoneyEarned = -1;
     public int PlayerHealth = -1;
     public int SceneIndex = -1;
 }

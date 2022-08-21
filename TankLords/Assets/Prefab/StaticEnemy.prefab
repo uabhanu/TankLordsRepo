@@ -688,7 +688,7 @@ PrefabInstance:
     - target: {fileID: 5099798685776176776, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: objPrefab
       value: 
-      objectReference: {fileID: 2896006505907891843, guid: cb1ea76ee265d85488910837e8c427d0, type: 3}
+      objectReference: {fileID: 592105176193249442, guid: 5eb1a8e5ef970944693686ea788c23ff, type: 3}
     - target: {fileID: 5099798685776176776, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: gizmosColour.a
       value: 1

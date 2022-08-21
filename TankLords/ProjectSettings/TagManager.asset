@@ -53,11 +53,11 @@ TagManager:
   - name: Enemies
     uniqueID: 4204487793
     locked: 0
-  - name: Player
-    uniqueID: 1829338787
-    locked: 0
   - name: Collectibles
     uniqueID: 1329044747
+    locked: 0
+  - name: Player
+    uniqueID: 1829338787
     locked: 0
   - name: Bullets
     uniqueID: 3788532611

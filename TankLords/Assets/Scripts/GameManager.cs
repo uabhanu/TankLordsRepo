@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private int _minimumNumberOfEnemies = 0;
     private int _numberOfEnemyTanksAlive;
     private SaveSystem _saveSystem;
+    private ScoreManager _scoreManager;
     
     #endregion
 
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         {
             _numberOfEnemyTanksAlive = FindObjectsOfType<DefaultEnemyAI>().Length;
             _player = playerInput.gameObject;
+            _scoreManager = FindObjectOfType<ScoreManager>();
         }
 
         _saveSystem = FindObjectOfType<SaveSystem>();
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
         {
             var damageable = _player.GetComponentInChildren<Damageable>();
             damageable.Health = _saveSystem.LoadedData.PlayerHealth;
+            _scoreManager.MoneyEarnedScore = _saveSystem.LoadedData.MoneyEarned;
         }
     }
 
@@ -70,7 +73,7 @@ public class GameManager : MonoBehaviour
     {
         if(_player != null)
         {
-            _saveSystem.SaveData(SceneManager.GetActiveScene().buildIndex + 1 , _player.GetComponentInChildren<Damageable>().Health);
+            _saveSystem.SaveData(_scoreManager.MoneyEarnedScore , SceneManager.GetActiveScene().buildIndex + 1 , _player.GetComponentInChildren<Damageable>().Health);
         }
     }
 

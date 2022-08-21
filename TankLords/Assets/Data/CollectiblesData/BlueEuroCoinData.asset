@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4174b2a31ad2b6442844144a0017ca74, type: 3}
   m_Name: BlueEuroCoinData
   m_EditorClassIdentifier: 
-  CoinValue: 100
+  CoinValue: 10

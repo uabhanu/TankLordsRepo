@@ -1,4 +1,6 @@
 ﻿using System;
+using DataSO;
+using UnityEngine;
 
 namespace Events
 {
@@ -6,55 +8,73 @@ namespace Events
 	{
 		#region Actions
 		
-		protected static event Action CollectibleCollectedAction;
+		protected static event Action<AudioClip , CoinData> CoinCollectedAction;
 		protected static event Action EnemyDiedAction;
 		
 		#endregion
 
 		#region Functions
 		
-		public static void SubscribeToEvent(TanksEvent evt , Action actionFunction)
+		public static void SubscribeToEvent(TanksEvent tanksEvent , Action actionFunction)
 		{
-			switch(evt)
+			switch(tanksEvent)
 			{
-				case TanksEvent.CollectibleCollected:
-					CollectibleCollectedAction += actionFunction;
-				break;
-				
 				case TanksEvent.EnemyDied:
 					EnemyDiedAction += actionFunction;
 				break;
 			}
 		}
-
-		public static void UnsubscribeFromEvent(TanksEvent evt , Action actionFunction)
+		
+		public static void SubscribeToEvent(TanksEvent tanksEvent , Action<AudioClip , CoinData> actionFunction)
 		{
-			switch(evt)
+			switch(tanksEvent)
 			{
-				case TanksEvent.CollectibleCollected:
-					CollectibleCollectedAction -= actionFunction;
+				case TanksEvent.CoinCollected:
+					CoinCollectedAction += actionFunction;
 				break;
-				
+			}
+		}
+
+		public static void UnsubscribeFromEvent(TanksEvent tanksEvent , Action actionFunction)
+		{
+			switch(tanksEvent)
+			{
 				case TanksEvent.EnemyDied:
 					EnemyDiedAction -= actionFunction;
 				break;
 			}
 		}
 		
-		public static void InvokeEvent(TanksEvent evt)
+		public static void UnsubscribeFromEvent(TanksEvent tanksEvent , Action<AudioClip , CoinData> actionFunction)
 		{
-			switch(evt)
+			switch(tanksEvent)
 			{
-				case TanksEvent.CollectibleCollected:
-					CollectibleCollectedAction?.Invoke();
+				case TanksEvent.CoinCollected:
+					CoinCollectedAction -= actionFunction;
 				break;
-				
+			}
+		}
+		
+		public static void InvokeEvent(TanksEvent tanksEvent)
+		{
+			switch(tanksEvent)
+			{
 				case TanksEvent.EnemyDied:
 					EnemyDiedAction?.Invoke();
 				break;
 			}
 		}
 		
+		public static void InvokeEvent(TanksEvent tanksEvent , AudioClip clipToPlay , CoinData coinData)
+		{
+			switch(tanksEvent)
+			{
+				case TanksEvent.CoinCollected:
+					CoinCollectedAction?.Invoke(clipToPlay , coinData);
+				break;
+			}
+		}
+
 		#endregion
 	}
 }
