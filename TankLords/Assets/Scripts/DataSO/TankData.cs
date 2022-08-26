@@ -14,6 +14,7 @@ namespace DataSO
         public float RotationSpeed = 100f;
         public float TrackDistance = 0.2f;
         public GameObject TracksPrefab;
+        public int KillValue;
         public int MaxHealth = 0;
         public int ObjectPoolSize;
     }

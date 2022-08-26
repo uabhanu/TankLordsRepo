@@ -21,5 +21,6 @@ MonoBehaviour:
   RotationSpeed: 100
   TrackDistance: 0.2
   TracksPrefab: {fileID: 1676127972891187836, guid: e7e7897199c0e9d4babda51460726887, type: 3}
+  KillValue: 100
   MaxHealth: 20
   ObjectPoolSize: 50

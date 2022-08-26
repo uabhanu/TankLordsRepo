@@ -7,6 +7,7 @@ public class SaveSystem : MonoBehaviour
     
     private bool _isInitialized;
     
+    [SerializeField] private string highScoreKey = "HighScore";
     [SerializeField] private string moneyEarnedKey = "MoneyEarned";
     [SerializeField] private string playerHealthKey = "PlayerHealth";
     [SerializeField] private string savePresentKey = "SavePresent";
@@ -39,6 +40,7 @@ public class SaveSystem : MonoBehaviour
         if(PlayerPrefs.GetInt(savePresentKey) == 1)
         {
             LoadedData = new LoadedData();
+            LoadedData.HighScore = PlayerPrefs.GetInt(highScoreKey);
             LoadedData.MoneyEarned = PlayerPrefs.GetInt(moneyEarnedKey);
             LoadedData.PlayerHealth = PlayerPrefs.GetInt(playerHealthKey);
             LoadedData.SceneIndex = PlayerPrefs.GetInt(sceneKey);
@@ -54,17 +56,19 @@ public class SaveSystem : MonoBehaviour
         LoadedData = null;
     }
 
-    public void SaveData(int moneyEarned , int sceneIndex , int playerHealth)
+    public void SaveData(int highScore , int moneyEarned , int sceneIndex , int playerHealth)
     {
         if(LoadedData == null)
         {
             LoadedData = new LoadedData();
         }
 
+        LoadedData.HighScore = highScore;
         LoadedData.MoneyEarned = moneyEarned;
         LoadedData.PlayerHealth = playerHealth;
         LoadedData.SceneIndex = sceneIndex;
         
+        PlayerPrefs.SetInt(highScoreKey , highScore);
         PlayerPrefs.SetInt(moneyEarnedKey , moneyEarned);
         PlayerPrefs.SetInt(playerHealthKey , playerHealth);
         PlayerPrefs.SetInt(savePresentKey , 1);
@@ -76,6 +80,7 @@ public class SaveSystem : MonoBehaviour
 
 public class LoadedData
 {
+    public int HighScore = -1;
     public int MoneyEarned = -1;
     public int PlayerHealth = -1;
     public int SceneIndex = -1;

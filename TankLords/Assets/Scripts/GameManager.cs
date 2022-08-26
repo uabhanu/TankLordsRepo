@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         {
             var damageable = _player.GetComponentInChildren<Damageable>();
             damageable.Health = _saveSystem.LoadedData.PlayerHealth;
+            _scoreManager.HighScore = _saveSystem.LoadedData.HighScore;
             _scoreManager.MoneyEarnedScore = _saveSystem.LoadedData.MoneyEarned;
         }
     }
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour
     {
         if(_player != null)
         {
-            _saveSystem.SaveData(_scoreManager.MoneyEarnedScore , SceneManager.GetActiveScene().buildIndex + 1 , _player.GetComponentInChildren<Damageable>().Health);
+            _saveSystem.SaveData(_scoreManager.HighScore , _scoreManager.MoneyEarnedScore , SceneManager.GetActiveScene().buildIndex + 1 , _player.GetComponentInChildren<Damageable>().Health);
         }
     }
 

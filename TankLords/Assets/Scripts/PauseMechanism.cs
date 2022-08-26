@@ -3,22 +3,31 @@ using UnityEngine.SceneManagement;
 
 public class PauseMechanism : MonoBehaviour
 {
+    #region Variables
+    
+    [SerializeField] private GameObject coinsScorePanelObj;
     [SerializeField] private GameObject healthPanelObj;
+    [SerializeField] private GameObject highScorePanelObj;
     [SerializeField] private GameObject pauseButtonPanelObj;
     [SerializeField] private GameObject pauseMenuPanelObj;
-    [SerializeField] private GameObject scorePanelObj;
+    
+    #endregion
 
+    #region Functions
+    
     public void ExitButton()
     {
         SceneManager.LoadScene("MainMenu");
     }
-    
+
     public void PauseButton()
     {
+        coinsScorePanelObj.SetActive(false);
         healthPanelObj.SetActive(false);
+        highScorePanelObj.SetActive(false);
         pauseButtonPanelObj.SetActive(false);
         pauseMenuPanelObj.SetActive(true);
-        scorePanelObj.SetActive(false);
+        highScorePanelObj.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -29,10 +38,14 @@ public class PauseMechanism : MonoBehaviour
 
     public void ResumeButton()
     {
+        coinsScorePanelObj.SetActive(true);
         healthPanelObj.SetActive(true);
+        highScorePanelObj.SetActive(true);
         pauseButtonPanelObj.SetActive(true);
         pauseMenuPanelObj.SetActive(false);
-        scorePanelObj.SetActive(true);
+        highScorePanelObj.SetActive(true);
         Time.timeScale = 1;
     }
+    
+    #endregion
 }
