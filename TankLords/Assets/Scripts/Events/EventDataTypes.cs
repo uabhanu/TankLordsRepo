@@ -3,6 +3,8 @@
     public enum TanksEvent
 	{
 		CoinCollected,
-		EnemyDied
+		EnemyDied,
+		MedicCollected,
+		PowerUpCollected
 	}
 }

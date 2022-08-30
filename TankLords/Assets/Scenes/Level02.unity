@@ -14065,6 +14065,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1789277106
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 449396255721011609, guid: 75020af1c8c9d1f4cbe10c63f3ffdbe0, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 449396255721011609, guid: 75020af1c8c9d1f4cbe10c63f3ffdbe0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449396255721011609, guid: 75020af1c8c9d1f4cbe10c63f3ffdbe0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449396255721011609, guid: 75020af1c8c9d1f4cbe10c63f3ffdbe0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449396255721011611, guid: 75020af1c8c9d1f4cbe10c63f3ffdbe0, type: 3}
+      propertyPath: m_Name
+      value: PowerUpSpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75020af1c8c9d1f4cbe10c63f3ffdbe0, type: 3}
 --- !u!1 &1861934678
 GameObject:
   m_ObjectHideFlags: 0
@@ -23597,6 +23626,10 @@ PrefabInstance:
     - target: {fileID: 3319198043001905295, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319198043761731161, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
+      propertyPath: isEligibleForPowerUps
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3319198043761731165, guid: f93662aa8add9a54bbc0d2522bf2f66b, type: 3}
       propertyPath: m_Name

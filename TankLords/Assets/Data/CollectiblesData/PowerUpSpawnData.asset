@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2517153564594a24e8a57f4c997e55c9, type: 3}
+  m_Name: PowerUpSpawnData
+  m_EditorClassIdentifier: 
+  GizmosColour: {r: 0, g: 0, b: 1, a: 1}
+  Radius: 2
+  AvailablePowerUps:
+  - {fileID: 8460396643050331733, guid: 0fa082176943ba94f992a4c3c403625f, type: 3}
+  - {fileID: 3821947204144060761, guid: c36ba495a0db2a045928cb4c4a918023, type: 3}
+  - {fileID: 5769333035582948466, guid: ca482e50bf4ef094d87a1aaa5dc48e1b, type: 3}
+  - {fileID: 5725389534639258532, guid: 3ed11949e8d6153459422a0972277b4d, type: 3}
+  - {fileID: 4985681243838407035, guid: 636957b758d272d4daec0233d9739b06, type: 3}

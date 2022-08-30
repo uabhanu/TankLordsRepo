@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b333cbdb9d3367419c6df32e8230df1, type: 3}
   m_Name: FastBulletData
   m_EditorClassIdentifier: 
-  MaxDistance: 10
+  MaxDistance: 15
   Speed: 10
-  Damage: 5
+  Damage: 10

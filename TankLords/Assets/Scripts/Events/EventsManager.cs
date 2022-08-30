@@ -10,6 +10,8 @@ namespace Events
 		
 		protected static event Action<AudioClip , CoinData> CoinCollectedAction;
 		protected static event Action EnemyDiedAction;
+		protected static event Action MedicCollectedAction;
+		protected static event Action<TankData , TurretData> PowerUpAction;
 		
 		#endregion
 
@@ -21,6 +23,10 @@ namespace Events
 			{
 				case TanksEvent.EnemyDied:
 					EnemyDiedAction += actionFunction;
+				break;
+				
+				case TanksEvent.MedicCollected:
+					MedicCollectedAction += actionFunction;
 				break;
 			}
 		}
@@ -34,6 +40,16 @@ namespace Events
 				break;
 			}
 		}
+		
+		public static void SubscribeToEvent(TanksEvent tanksEvent , Action<TankData , TurretData> actionFunction)
+		{
+			switch(tanksEvent)
+			{
+				case TanksEvent.PowerUpCollected:
+					PowerUpAction += actionFunction;
+				break;
+			}
+		}
 
 		public static void UnsubscribeFromEvent(TanksEvent tanksEvent , Action actionFunction)
 		{
@@ -41,6 +57,10 @@ namespace Events
 			{
 				case TanksEvent.EnemyDied:
 					EnemyDiedAction -= actionFunction;
+				break;
+				
+				case TanksEvent.MedicCollected:
+					MedicCollectedAction -= actionFunction;
 				break;
 			}
 		}
@@ -55,12 +75,26 @@ namespace Events
 			}
 		}
 		
+		public static void UnsubscribeFromEvent(TanksEvent tanksEvent , Action<TankData , TurretData> actionFunction)
+		{
+			switch(tanksEvent)
+			{
+				case TanksEvent.PowerUpCollected:
+					PowerUpAction -= actionFunction;
+				break;
+			}
+		}
+		
 		public static void InvokeEvent(TanksEvent tanksEvent)
 		{
 			switch(tanksEvent)
 			{
 				case TanksEvent.EnemyDied:
 					EnemyDiedAction?.Invoke();
+				break;
+				
+				case TanksEvent.MedicCollected:
+					MedicCollectedAction?.Invoke();
 				break;
 			}
 		}
@@ -71,6 +105,16 @@ namespace Events
 			{
 				case TanksEvent.CoinCollected:
 					CoinCollectedAction?.Invoke(clipToPlay , coinData);
+				break;
+			}
+		}
+		
+		public static void InvokeEvent(TanksEvent tanksEvent , TankData tankData , TurretData turretData)
+		{
+			switch(tanksEvent)
+			{
+				case TanksEvent.PowerUpCollected:
+					PowerUpAction?.Invoke(tankData , turretData);
 				break;
 			}
 		}

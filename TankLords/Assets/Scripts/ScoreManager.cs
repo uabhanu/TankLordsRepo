@@ -25,7 +25,7 @@ public class ScoreManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        UnsbscribeFromEvents();
+        UnsubscribeFromEvents();
     }
 
     private void OnCoinCollected(AudioClip noUseForAudioClip , CoinData coinData)
@@ -46,7 +46,7 @@ public class ScoreManager : MonoBehaviour
         EventsManager.SubscribeToEvent(TanksEvent.EnemyDied , OnEnemyDied);
     }
     
-    private void UnsbscribeFromEvents()
+    private void UnsubscribeFromEvents()
     {
         EventsManager.UnsubscribeFromEvent(TanksEvent.CoinCollected , OnCoinCollected);
         EventsManager.UnsubscribeFromEvent(TanksEvent.EnemyDied , OnEnemyDied);

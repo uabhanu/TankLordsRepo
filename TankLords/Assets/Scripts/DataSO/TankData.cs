@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DataSO
 {
-    [CreateAssetMenu(fileName = "NewTankData" , menuName = "Data/TankData")]
+    [CreateAssetMenu(fileName = "NewTankData" , menuName = "Data/BoostMovementTankData")]
     public class TankData : ScriptableObject
     {
         public float Acceleration = 70f;

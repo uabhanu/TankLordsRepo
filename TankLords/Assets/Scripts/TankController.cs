@@ -4,9 +4,10 @@ public class TankController : MonoBehaviour
 {
     #region Variables
 
+    [SerializeField] private bool isEligibleForPowerUps;
+    
     public AimTurret AimTurret;
     public TankMover TankMover;
-    public Transform TurretParent;
     public Turret[] Turrets;
 
     #endregion
@@ -32,6 +33,11 @@ public class TankController : MonoBehaviour
         {
             Turrets = GetComponentsInChildren<Turret>();
         }
+    }
+    
+    public bool IsEligibleForPowerUps
+    {
+        get => isEligibleForPowerUps;
     }
 
     public void HandleMoveBody(Vector2 movementVector)
