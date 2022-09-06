@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590ad5ad49b9dab4cae5984d87c69183, type: 3}
   m_Name: BoostTankData
   m_EditorClassIdentifier: 
-  Acceleration: 90
-  Deacceleration: 80
+  Acceleration: 900
+  Deacceleration: 800
   EngineAudioMaxVolume: 1
   EngineAudioMinVolume: 0.05
   EngineAudioVolumeDelta: 0.01
@@ -21,5 +21,6 @@ MonoBehaviour:
   RotationSpeed: 200
   TrackDistance: 0.2
   TracksPrefab: {fileID: 1676127972891187836, guid: e7e7897199c0e9d4babda51460726887, type: 3}
+  KillValue: 0
   MaxHealth: 150
   ObjectPoolSize: 50

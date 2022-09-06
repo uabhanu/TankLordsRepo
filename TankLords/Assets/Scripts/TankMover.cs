@@ -9,7 +9,7 @@ public class TankMover : MonoBehaviour
     #region Variables
     
     private float _currentForwardDirection = 1f;
-    private float _currentSpeed;
+    [SerializeField] private float _currentSpeed;
     private PowerUpIndicator _powerUpIndicator;
     private TankData _currentTankData;
     private Vector2 _movementVector;
