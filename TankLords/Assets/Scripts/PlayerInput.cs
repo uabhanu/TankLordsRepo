@@ -54,7 +54,15 @@ public class PlayerInput : MonoBehaviour
 
     private void GetBodyMovement()
     {
-        onMoveBody?.Invoke(_movementVector.normalized);
+        if(isUsingNewInput)
+        {
+            onMoveBody?.Invoke(_movementVector.normalized);
+        }
+        else
+        {
+            Vector2 movementVector = new Vector2(Input.GetAxisRaw("Horizontal") , Input.GetAxisRaw("Vertical"));
+            onMoveBody?.Invoke(movementVector.normalized);   
+        }
     }
     
     private Vector2 GetMousePosition()
@@ -77,7 +85,17 @@ public class PlayerInput : MonoBehaviour
 
     private void GetShootingInput(InputAction.CallbackContext context)
     {
-        onShoot?.Invoke();
+        if(isUsingNewInput)
+        {
+            onShoot?.Invoke();   
+        }
+        else
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                onShoot?.Invoke();
+            }
+        }
     }
 
     private void GetTurretMovement()
