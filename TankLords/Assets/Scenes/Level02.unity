@@ -13968,6 +13968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50484a3a1d08b5541949e0ce4aad81a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUsingNewInput: 1
   mainCamera: {fileID: 519420031}
   onShoot:
     m_PersistentCalls:

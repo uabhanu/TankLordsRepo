@@ -9,7 +9,8 @@ public class PlayerInput : MonoBehaviour
     private PlayerInputActions _playerInputActions;
     private Vector2 _movementVector;
     private Vector2 _turretMovementVector;
-    
+
+    [SerializeField] private bool isUsingNewInput;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private UnityEvent onShoot;
     [SerializeField] private UnityEvent<Vector2> onMoveBody;
@@ -55,6 +56,24 @@ public class PlayerInput : MonoBehaviour
     {
         onMoveBody?.Invoke(_movementVector.normalized);
     }
+    
+    private Vector2 GetMousePosition()
+    {
+        if(isUsingNewInput)
+        {
+            Vector3 mousePosition = _turretMovementVector;
+            mousePosition.z = mainCamera.nearClipPlane;
+            Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+            return mouseWorldPosition;
+        }
+        else
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = mainCamera.nearClipPlane;
+            Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+            return mouseWorldPosition;
+        }
+    }
 
     private void GetShootingInput(InputAction.CallbackContext context)
     {
@@ -63,7 +82,7 @@ public class PlayerInput : MonoBehaviour
 
     private void GetTurretMovement()
     {
-        onMoveTurret?.Invoke(_turretMovementVector.normalized);   
+        onMoveTurret?.Invoke(GetMousePosition());   
     }
     
     #endregion
